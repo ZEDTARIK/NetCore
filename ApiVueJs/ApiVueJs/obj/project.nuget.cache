@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "jreFK6Nw3FfCMz9PEHLE/YFJERr6TXXG856n1lF4UZL7jzFtQvojYTsOh50h96UsjHF9Proaw7UuOqYMSQSBSg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\z.ettarak\\Desktop\\DevOps\\05-NetCore\\ApiVueJs\\ApiVueJs\\ApiVueJs.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\z.ettarak\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.16\\microsoft.aspnetcore.jsonpatch.3.1.16.nupkg.sha512",
+    "C:\\Users\\z.ettarak\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.16\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.16.nupkg.sha512",
+    "C:\\Users\\z.ettarak\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\z.ettarak\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\z.ettarak\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
