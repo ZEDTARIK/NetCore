@@ -9,7 +9,8 @@ using System.Data;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using ApiVueJs.Models;
-
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace ApiVueJs.Controllers
 {
@@ -18,10 +19,12 @@ namespace ApiVueJs.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly IWebHostEnvironment _env;
 
-        public EmployeeController(IConfiguration configuration)
+        public EmployeeController(IConfiguration configuration, IWebHostEnvironment env)
         {
             _configuration = configuration;
+            _env = env;
         }
 
         // Get List of Employees 
@@ -177,5 +180,30 @@ namespace ApiVueJs.Controllers
             return new JsonResult("Deleted Employee With SuccessFully ! ");
         }
 
+
+        [Route("SaveFile")]
+        [HttpPost]
+
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string filename = DateTime.Now.ToFileTime() + postedFile.FileName ;
+                var phisycalPath = _env.ContentRootPath + "/Photos/" + filename;
+                
+                using( var stream = new FileStream(phisycalPath, FileMode.Create) )
+                {
+                    postedFile.CopyTo(stream);
+                }
+
+                return new JsonResult(filename);
+    
+            } catch(Exception)
+            {
+                return new JsonResult("anonymos.png");
+            }
+        }
     }
 }
