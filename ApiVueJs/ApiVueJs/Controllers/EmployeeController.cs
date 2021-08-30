@@ -120,12 +120,15 @@ namespace ApiVueJs.Controllers
         }
 
 
-        [HttpPut("{EmployeeId}")]
+        [HttpPut]
         public JsonResult Put(Employee employee)
         {
-            string query = @" Update dbo.Employees 
-                                 SET EmployeeName = @EmployeeName 
-                              WHERE EmployeeID = @EmployeeID
+            string query = @" update dbo.Employees
+                           set EmployeeName= @EmployeeName,
+                                Department=@Department,
+                                DateOfJoining=@DateOfJoining,
+                                PhotoFileName=@PhotoFileName
+                            where EmployeeId=@EmployeeId
                             ";
 
             DataTable table = new DataTable();
@@ -190,7 +193,8 @@ namespace ApiVueJs.Controllers
             {
                 var httpRequest = Request.Form;
                 var postedFile = httpRequest.Files[0];
-                string filename = DateTime.Now.ToFileTime() + postedFile.FileName ;
+                string filename = DateTime.Now.ToFileTime() +"_"+ postedFile.FileName ;
+                // string filename = postedFile.FileName;
                 var phisycalPath = _env.ContentRootPath + "/Photos/" + filename;
                 
                 using( var stream = new FileStream(phisycalPath, FileMode.Create) )
@@ -202,7 +206,7 @@ namespace ApiVueJs.Controllers
     
             } catch(Exception)
             {
-                return new JsonResult("anonymos.png");
+                return new JsonResult("anonymous.png");
             }
         }
     }
