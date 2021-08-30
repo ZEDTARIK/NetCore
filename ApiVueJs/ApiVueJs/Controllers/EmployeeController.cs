@@ -120,7 +120,7 @@ namespace ApiVueJs.Controllers
         }
 
 
-        [HttpPut("{EmployeeId}")]
+        [HttpPut]
         public JsonResult Put(Employee employee)
         {
             string query = @" Update dbo.Employees 
